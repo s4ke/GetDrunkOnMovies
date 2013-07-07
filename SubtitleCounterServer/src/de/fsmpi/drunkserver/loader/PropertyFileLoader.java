@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,13 +16,12 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.common.collect.Ordering;
+import com.google.common.collect.ImmutableSortedMap;
 
 import de.fsmpi.drunkserver.model.Movie;
-import de.fsmpi.drunkserver.util.ValueComparableMap;
 
 public final class PropertyFileLoader {
-	
+
 	public static final String MOVIE_NAME_KEY = "MOVIE_NAME_TO_DISPLAY_IN_DRUNK_SERVER";
 
 	private static final Logger LOGGER = Logger
@@ -48,14 +48,13 @@ public final class PropertyFileLoader {
 		for (File file : files) {
 			try (FileInputStream fs = new FileInputStream(file)) {
 				Properties props = new Properties();
-				props.load(new FileInputStream(file));
+				props.load(fs);
 				Matcher matcher = PATTERN.matcher(file.getName());
 				if (!matcher.matches()) {
 					throw new AssertionError("should match");
 				}
 				String movieFileName = matcher.group(1);
-				Map<String, Integer> drinkAction = new ValueComparableMap<>(
-						Ordering.natural().reverse());
+				final Map<String, Integer> drinkAction = new HashMap<>();
 				for (Entry<Object, Object> entry : props.entrySet()) {
 					if (!entry.getKey().equals(MOVIE_NAME_KEY)) {
 						try {
@@ -73,7 +72,20 @@ public final class PropertyFileLoader {
 				String movieName = props.getProperty(MOVIE_NAME_KEY,
 						movieFileName);
 				mov.setName(movieName);
-				mov.setDrink(drinkAction);
+				mov.setDrink(ImmutableSortedMap.copyOf(drinkAction,
+						new Comparator<String>() {
+
+							@Override
+							public int compare(String first, String second) {
+								int ret = drinkAction.get(second)
+										- drinkAction.get(first);
+								if (ret == 0) {
+									ret = first.compareTo(second);
+								}
+								return ret;
+							}
+
+						}));
 				List<Movie> list = ret.get(movieName);
 				if (list == null) {
 					list = new ArrayList<>();

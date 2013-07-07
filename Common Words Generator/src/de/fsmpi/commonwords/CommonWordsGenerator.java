@@ -4,19 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.google.common.collect.Ordering;
-
-import de.fsmpi.commonwords.util.ValueComparableMap;
+import com.google.common.collect.ImmutableSortedMap;
 
 public class CommonWordsGenerator {
 
@@ -31,21 +29,34 @@ public class CommonWordsGenerator {
 			IOException {
 		Map<String, Integer> words = new HashMap<>();
 		int count = 0;
+		// TODO: maybe check for words that are special
+		// for some books but are used quite often
+		// and don't add them to the common words
 		for (String arg : args) {
 			String input = readFileAsString(arg);
 			count += count(input, words);
 		}
-		ValueComparableMap<String, Integer> tmp = new ValueComparableMap<>(
-				Ordering.natural().reverse());
+		final Map<String, Integer> tmp = new HashMap<>();
 		for (Entry<String, Integer> entry : words.entrySet()) {
 			if (((double) entry.getValue() / (double) count) > THRESHOLD) {
 				tmp.put(entry.getKey(), entry.getValue());
 			}
 		}
-		words = tmp;
+		words = ImmutableSortedMap.copyOf(tmp, new Comparator<String>() {
+
+			@Override
+			public int compare(String first, String second) {
+				int ret = tmp.get(second) - tmp.get(first);
+				if (ret == 0) {
+					ret = first.compareTo(second);
+				}
+				return ret;
+			}
+
+		});
 		System.out.println("Total words read: " + count);
 		System.out.println("Common Words are: " + words);
-		try(PrintWriter writer = new PrintWriter(new File("common_words.txt"))) {
+		try (PrintWriter writer = new PrintWriter(new File("common_words.txt"))) {
 			for (Entry<String, Integer> entry : words.entrySet()) {
 				writer.println(entry.getKey());
 			}
