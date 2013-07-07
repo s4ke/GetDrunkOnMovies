@@ -29,6 +29,9 @@ public class CommonWordsGenerator {
 			IOException {
 		Map<String, Integer> words = new HashMap<>();
 		int count = 0;
+		// TODO: maybe check for words that are special
+		// for some books but are used quite often
+		// and don't add them to the common words
 		for (String arg : args) {
 			String input = readFileAsString(arg);
 			count += count(input, words);
