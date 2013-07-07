@@ -1,21 +1,7 @@
 <html>
 <head>
-	<link href='http://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet' type='text/css'>
-	<style type="text/css">
-		
-		body {
-			font-family: 'Fauna One', serif;
-			color: fff;
-			background-color: CC0033;
-		}
-		
-		.movieTitle {
-			cursor: hand;
-			cursor: pointer;
-			font-family: 'Fauna One', serif;
-		}
-		
-	</style>
+	<!--<link href='http://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet' type='text/css'>-->
+	<link rel="stylesheet" type="text/css" href="css/drunkserver.css">
 	<script src="/js/jquery-2.0.2.js"></script>
 	<script>
 
@@ -74,23 +60,31 @@
 	</script>
 </head>
 <body>
-
-	<h1>Get Drunk on Movies!</h1>
-	<p>Tired of getting drunk without any sense?<br>
-	Watching movies normally is going on your nerves?<br>
-	Yes? Then this site has the answer for you!<br>
-	Just select a movie from the list below and<br>
-	drink on every occasion that is recommended! :)</p>
-	<p>The detailed info for every movie shows<br>
-	a list of occasions on which you should drink<br>
-	and the amount of occurences in the specific movie.</p>
-	<p>If you have some nice additions to the list<br>
-	just write an e-mail to
-	<a href="mailto:test@test.com">test@test.com</a>.
-	</p>
-
-	<button type="button" onclick="showAll()">Show All Movies</button>
-	<div id="display"></div>
-
+	<div id="ds-centercontainer">
+		<div id="ds-maincontainer">
+			<h1>Get Drunk on Movies!</h1>
+			<div class="ds-ui-text">
+				<p>
+					Tired of getting drunk without any sense?
+					Watching movies normally is going on your nerves?
+					Yes? Then this site has the answer for you!
+					Just select a movie from the list below and
+					drink on every occasion that is recommended! :)
+				</p>
+				<p>
+					The detailed info for every movie shows
+					a list of occasions on which you should drink
+					and the amount of occurences in the specific movie.
+				</p>
+				<p>
+					If you have some nice additions to the list
+					just write an e-mail to
+					<a href="mailto:test@test.com">test@test.com</a>.
+				</p>
+			</div>
+			<button type="button" onclick="showAll()">Show All Movies</button>
+			<div id="display"></div>
+		</div>
+	</div>
 </body>
 </html>
