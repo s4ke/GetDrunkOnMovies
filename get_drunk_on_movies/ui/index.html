@@ -3,61 +3,7 @@
 	<!--<link href='http://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet' type='text/css'>-->
 	<link rel="stylesheet" type="text/css" href="css/drunkserver.css">
 	<script src="/js/jquery-2.0.2.js"></script>
-	<script>
-
-		function showAll() {
-			$.getJSON("http://localhost:8080/?allMovies", {}, 
-				function(data) {
-					var display = $('#display');
-					display.html('');
-					for(var i = 0; i < data.length; ++i) {
-						var movieTitleContainer = $('<div class="movieTitle">' + (i+1) + '. ' + data[i] + '</div>');
-						movieTitleContainer.data('name', data[i]);
-						display.append(movieTitleContainer);
-					}
-					addEvents();
-				});
-		}
-		
-		function showOne(movie) {
-			$.getJSON("http://localhost:8080/", {
-					'movie' : movie
-				}, function(data) {
-					var display = $('#display');
-					display.html('');
-					for(var i = 0; i < data.length; ++i) {
-						var instance = data[i];
-						addMovieToDiv(display, instance);
-					}
-					addEvents();
-				});
-		}
-		
-		function addMovieToDiv(div, movie) {
-			var drink = movie['drink'];
-			var name = movie['name'];
-			if(drink !== null && name !== null) {
-				var movieTitleContainer = $('<div class="movieTitle">' + name + '</div>');
-				movieTitleContainer.data('name', name);
-				div.append(movieTitleContainer);
-				var drinkContainer = $('<div>');
-				for(var occasion in drink) {
-					var drinkDiv = $('<div>');
-					drinkDiv.attr('class', 'drink');
-					drinkDiv.append(occasion + ' : ' + drink[occasion]);
-					drinkContainer.append(drinkDiv);
-				}
-				div.append(drinkContainer);
-			}
-		}
-		
-		function addEvents() {
-			$('.movieTitle').click(function(event) {
-				showOne($(event.target).data('name'));
-			});
-		}
-
-	</script>
+	<script src="/js/drunkserver.js"></script>
 </head>
 <body>
 	<div id="ds-centercontainer">
@@ -83,7 +29,16 @@
 				</p>
 			</div>
 			<button type="button" onclick="showAll()">Show All Movies</button>
+			<select type="radio">
+				<span>test radio box</span>
+				<option>test option</option>
+			</select>
 			<div id="display"></div>
+			<div id="test" class="ds-test">
+				big ass test
+			</div>
+			<div id="ape" class="ds-ui-ape">
+			</div>
 		</div>
 	</div>
 </body>

@@ -48,6 +48,34 @@ button:active {
 	transition:			box-shadow .1s;
 }
 
+select {
+	background-color:	#FFFFFF;
+	border:				none;
+	
+	font-family:		sans-serif;
+	font-weight:		bold;
+	font-size:			1em;
+	color:				#565656;
+	
+	padding:			4px 0px 4px 6px;
+	
+	box-shadow: 		0px 0px 5px #888888;
+	transition:			box-shadow .5s;
+	
+	cursor:				pointer;
+	
+	-webkit-appearance: none;
+}
+
+select:active {
+	border:				none;
+}
+
+select > * {
+	background-color:	#FFFFFF;
+	border:				none;
+}
+
 #ds-maincontainer {
 	width:				40%;
 	height:				100%;
@@ -88,4 +116,28 @@ button:active {
 	text-align:			left;
 		
 	padding-left:		5px;
+}
+
+.ds-ui-ape {
+	background:	url("Ape_walks.gif") no-repeat center center;
+	
+	position:			absolute;
+	
+	height:				64px;
+	width:				64px;
+}
+
+.ds-ui-ape-flip {
+	-moz-transform: 	scaleX(-1);
+    -o-transform: 		scaleX(-1);
+    -webkit-transform: 	scaleX(-1);
+    transform: 			scaleX(-1);
+    filter: 			FlipH;
+    -ms-filter: 		"FlipH";
+}
+
+.ds-test {
+	height:				200px;
+	width:				200px;
+	background-color:	#FFF000;
 }
