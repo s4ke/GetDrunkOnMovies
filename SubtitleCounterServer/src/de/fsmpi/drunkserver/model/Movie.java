@@ -1,17 +1,17 @@
 package de.fsmpi.drunkserver.model;
 
-import java.util.Map;
+import com.google.common.collect.ImmutableSortedMap;
 
 public class Movie {
 
-	private Map<String, Integer> drink;
+	private ImmutableSortedMap<String, Integer> drink;
 	private String name;
 
-	public Map<String, Integer> getDrink() {
+	public ImmutableSortedMap<String, Integer> getDrink() {
 		return drink;
 	}
 
-	public void setDrink(Map<String, Integer> drink) {
+	public void setDrink(ImmutableSortedMap<String, Integer> drink) {
 		this.drink = drink;
 	}
 
@@ -26,8 +26,8 @@ public class Movie {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Movie [drink=").append(drink).append(", name=")
-				.append(name).append("]");
+		builder.append("Movie [drink=").append(this.drink).append(", name=")
+				.append(this.name).append("]");
 		return builder.toString();
 	}
 
