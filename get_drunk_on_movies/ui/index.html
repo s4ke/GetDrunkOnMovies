@@ -1,17 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/drunkserver.css">
-	<script src="/js/jquery-2.0.2.js"></script>
-	<script src="/js/drunkserver.js"></script>
+	<script src="/js/jquery-2.0.2.js" type="text/javascript"></script>
+	<script src="/js/drunkserver.js" type="text/javascript"></script>
+	<title>get drunk on movies</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="fun page helping you getting drunk">
 </head>
 <body>
 	<div id="ds-centercontainer">
 		<div id="ds-maincontainer">
 			<h1>Get Drunk on Movies!</h1>
 			<div class="ds-ui-gravity-left">
-				<input tpye="text" class="ds-ui-input" placeholder="search a movie"></input>
+				<input id="ds-searchbox" type="text" class="ds-ui-input" placeholder="search a movie"></input>
 			</div>
 			<div id="ds-content">
 				<div class="ds-ui-text">
@@ -33,10 +37,9 @@
 						<a href="mailto:test@test.com">test@test.com</a>.
 					</p>
 				</div>
-				<button type="button" onclick="showMovieList()">Show All Movies</button>
 			</div>
-			<!--div id="ape" class="ds-ui-ape"-->
-			</div>
+			<!--div id="ape" class="ds-ui-ape"></div-->
+			<button type="button" onclick="showMovieList()">Show All Movies</button>
 		</div>
 	</div>
 </body>
