@@ -23,6 +23,7 @@
 	<classpathentry kind="lib" path="libs/jetty/jetty-webapp-9.0.3.v20130506.jar"/>
 	<classpathentry kind="lib" path="libs/jetty/jetty-xml-9.0.3.v20130506.jar"/>
 	<classpathentry kind="lib" path="libs/jetty/servlet-api-3.0.jar"/>
+	<classpathentry kind="lib" path="libs/LuceneBeanExtension-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
