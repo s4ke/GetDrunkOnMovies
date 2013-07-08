@@ -207,7 +207,7 @@ function addMovieToDiv(container, movie) {
 }
 
 function search(searchString) {
-	$.getJSON(host+":8080/?search", 
+	$.getJSON(host+":8080/", 
 	{
 		'search' : searchString
 	}, 
