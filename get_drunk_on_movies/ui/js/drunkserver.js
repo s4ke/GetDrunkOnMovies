@@ -3,8 +3,8 @@ $(document).ready(function() {
 		hideElement($('#test'));
 	});
 	
-	apeInit();
-	apeWalk();
+	//apeInit();
+	//apeWalk();
 });
 
 function apeInit() {
@@ -85,7 +85,7 @@ function showMovieList() {
 
 function putMoviesInList(movies, list) {
 	var divider = $('<div class="ds-ui-divider"></div>');
-	var movie = $('<span class="ds-ui-entry"></div>');
+	var movie = $('<div class="ds-ui-entry ds-ui-clickable"></div>');
 	for(var index in movies) {
 		var odd = true;
 		// divider
@@ -95,7 +95,11 @@ function putMoviesInList(movies, list) {
 		// movies
 		for(var key in movies[index]) {
 			var movieClone = movie.clone();
+			movieClone.data('name', movies[index][key]);
 			movieClone.html(movies[index][key]);
+			movieClone.click(function(e) {
+				showOne($(e.target).data('name'));
+			});
 			if(odd) {
 				movieClone.addClass('ds-ui-entry-odd');
 			}
@@ -119,34 +123,55 @@ function sortMovies(movies, sorted) {
 }
 		
 function showOne(movie) {
-	$.getJSON("http://localhost:8080/", {
-			'movie' : movie
-		}, function(data) {
-			var display = $('#display');
-			display.html('');
-			for(var i = 0; i < data.length; ++i) {
-				var instance = data[i];
-				addMovieToDiv(display, instance);
+	$.getJSON("http://localhost:8080/", 
+	{
+		'movie' : movie
+	}, function(data) {
+		var container = $('#ds-content');
+		hideElement(container, function() {
+			container.empty();
+			for(var key in data) {
+				var instance = data[key];
+				addMovieToDiv(container, instance);
 			}
-			addEvents();
-		});
+			showElement(container);
+		});			
+	});
 }
 		
-function addMovieToDiv(div, movie) {
+function addMovieToDiv(container, movie) {	
+	var titleContainer = $('<div class="ds-ui-divider"></div>');
+	var table = $('<table class="ds-ui-drink-table"></table>');
+	var tableRow = $('<tr class="ds-ui-entry"></tr>');
+	var occasionContainer = $('<td class="ds-ui-occasion"></td>');
+	var drinkCountContainer = $('<td class="ds-ui-drink-count"></td>');
+	
 	var drink = movie['drink'];
 	var name = movie['name'];
 	if(drink !== null && name !== null) {
-		var movieTitleContainer = $('<div class="movieTitle">' + name + '</div>');
-		movieTitleContainer.data('name', name);
-		div.append(movieTitleContainer);
-		var drinkContainer = $('<div>');
+		var titleClone = titleContainer.clone();
+		titleClone.html(name);
+		container.append(titleClone);
+		var odd = true;
 		for(var occasion in drink) {
-			var drinkDiv = $('<div>');
-			drinkDiv.attr('class', 'drink');
-			drinkDiv.append(occasion + ' : ' + drink[occasion]);
-			drinkContainer.append(drinkDiv);
+			var rowClone = tableRow.clone();
+			var occasionClone = occasionContainer.clone();
+			var drinkCountClone = drinkCountContainer.clone();
+			
+			if(odd) {
+				rowClone.addClass('ds-ui-entry-odd');
+			}
+			
+			occasionClone.html(occasion);
+			drinkCountClone.html(drink[occasion]);
+			rowClone.append(occasionClone);
+			rowClone.append(drinkCountClone);
+			table.append(rowClone);
+			
+			odd = !odd;
 		}
-		div.append(drinkContainer);
+		
+		container.append(table);
 	}
 }
 		

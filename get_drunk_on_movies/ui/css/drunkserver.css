@@ -2,14 +2,14 @@ body {
 	padding:			0px;
 	margin:				0px;
 	
-	font-family:		sans-serif;
+	font-family:		fauna one;
 	font-weight:		bold;
 	color:				#565656;
 }
 
 h1 {
 	color:				#76dd00;
-	font-family:		fantasy;
+	font-family: 		'Denk One', sans-serif;
 	
 	text-align:			right;
 	
@@ -25,7 +25,7 @@ button {
 	background-color:	#FFFFFF;
 	border:				none;
 	
-	font-family:		sans-serif;
+	font-family:		fauna one;
 	font-weight:		bold;
 	font-size:			1em;
 	color:				#565656;
@@ -52,7 +52,7 @@ select {
 	background-color:	#FFFFFF;
 	border:				none;
 	
-	font-family:		sans-serif;
+	font-family:		fauna one;
 	font-weight:		bold;
 	font-size:			1em;
 	color:				#565656;
@@ -76,22 +76,41 @@ select > * {
 	border:				none;
 }
 
+input {
+	text-align:			left;
+	
+	border-style:		none none solid none;
+	border-width:		1px;
+	border-color: 		#76dd00;
+	
+	box-shadow: 		0px 0px 5px #888888;
+	
+	background-color:	#f3f3f3;
+	
+	outline:			none;
+	
+	padding:			2px;
+	
+	font-family:		fauna one;
+	font-weight:		bold;
+	color:				#565656;
+}
+
 #ds-maincontainer {
 	width:				40%;
-	height:				100%;
+	min-height:			100%;
 	min-width:			500px;
 	
-	background: rgb(238,238,238); /* Old browsers */
-	background: -moz-linear-gradient(-45deg,  rgba(238,238,238,1) 0%, rgba(233,233,233,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(233,233,233,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* IE10+ */
-	background: linear-gradient(135deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: 		rgb(238,238,238); /* Old browsers */
+	background: 		-moz-linear-gradient(-45deg,  rgba(238,238,238,1) 0%, rgba(233,233,233,1) 100%); /* FF3.6+ */
+	background: 		-webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(233,233,233,1))); /* Chrome,Safari4+ */
+	background: 		-webkit-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: 		-o-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Opera 11.10+ */
+	background: 		-ms-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* IE10+ */
+	background: 		linear-gradient(135deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* W3C */
+	filter: 			progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	
-	padding-left:		10px;
-	padding-right:		10px;
+	padding: 			0px 10px 10px 10px;
 	
 	box-shadow: 		0px 0px 25px #888888;
 	
@@ -137,8 +156,9 @@ select > * {
 	font-size:			1.3em;
 	font-weight:		normal;
 	text-align:			left;
+	padding-top:		10px;
 	padding-left:		.3em;
-	font-family:		fantasy;
+	font-family: 		'Denk One', sans-serif;
 	
 	border-style:		none none solid none;
 	border-width:		1px;
@@ -153,16 +173,54 @@ select > * {
 	text-align:			left;
 	
 	background-color:	#efefef;
+	
+	transition:			background-color .5s;
+}
+
+.ds-ui-clickable {
+	cursor:				pointer;
+}
+
+.ds-ui-entry:hover {
+	background-color:	#c8fc88 !important;
+	
+	transition:			background-color .1s;
 }
 
 .ds-ui-entry-odd {
 	background-color:	#f2f2f2;
 }
 
-.ds-test {
-	height:				200px;
-	width:				200px;
-	background-color:	#FFF000;
+.ds-ui-gravity-left {
+	width:				100%;
+	text-align:			left;
 }
 
-.ds-ui
+.ds-ui-gravity-right {
+	width:				100%;
+	text-align:			right;
+}
+
+.ds-ui-gravity-center {
+	width:				100%;
+	text-align:			center;
+}
+
+.ds-ui-occasion {
+	text-align:			left;
+	
+	width:				*;
+}
+
+.ds-ui-drink-count {
+	text-align:			right;
+	
+	color:				#76dd00;
+	font-family: 		'Denk One', sans-serif;
+	
+	width:				100%;
+}
+
+.ds-ui-drink-table {
+	width:				100%;
+}

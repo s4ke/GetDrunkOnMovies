@@ -2,27 +2,27 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-annotations-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-client-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-continuation-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-deploy-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-http-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-io-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-jaas-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-jmx-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-jndi-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-plus-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-proxy-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-rewrite-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-security-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-server-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-servlet-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-servlets-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-util-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-webapp-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/jetty-xml-9.0.4.v20130625.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/servlet-api-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/flexjson-2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/lib/guava-14.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/flexjson-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/guava-14.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-annotations-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-client-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-continuation-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-deploy-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-http-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-io-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-jaas-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-jmx-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-jndi-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-plus-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-proxy-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-rewrite-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-security-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-server-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-servlet-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-servlets-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-util-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-webapp-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/jetty-xml-9.0.4.v20130625.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Killerzelle/Documents/GitHub/GetDrunkOnMovies/libs/servlet-api-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
