@@ -2,8 +2,10 @@ package de.fsmpi.drunkserver;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -88,6 +90,16 @@ public class DrunkServer extends AbstractHandler {
 				} catch (IOException e) {
 					LOGGER.log(Level.INFO, "IOException in init", e);
 				}
+			} else if(request.getParameter("search") != null) {
+				//TODO: LUCENIZE this
+				String searchString = request.getParameter("search");
+				Set<String> ret = new HashSet<String>();
+				for(String cur : this.moviesAvailable) {
+					if(cur.contains(searchString)) {
+						ret.add(cur);
+					}
+				}
+				serializer.serialize(ImmutableSortedSet.copyOf(ret), writer);
 			} else {
 				writer.println("nothing to do");
 			}
