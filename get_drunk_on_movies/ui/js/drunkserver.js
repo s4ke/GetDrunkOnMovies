@@ -1,4 +1,4 @@
-host = 'localhost';
+host = 'http://78.47.27.135';
 
 var delay = (function(){
   var timer = 0;
@@ -97,7 +97,7 @@ function showElement(ele, callback) {
 }
 
 function showMovieList() {
-	$.getJSON("http://"+host+":8080/?allMovies", 
+	$.getJSON(host+":8080/?allMovies", 
 		{}, 
 		fillMovieList
 	);
@@ -154,7 +154,7 @@ function sortMovies(movies, sorted) {
 }
 		
 function showOne(movie) {
-	$.getJSON("http://"+host+":8080/", 
+	$.getJSON(host+":8080/", 
 	{
 		'movie' : movie
 	}, function(data) {
@@ -207,8 +207,7 @@ function addMovieToDiv(container, movie) {
 }
 
 function search(searchString) {
-alert("searching: " +searchString);
-	$.getJSON("http://"+host+":8080/?search", 
+	$.getJSON(host+":8080/?search", 
 	{
 		'search' : searchString
 	}, 
