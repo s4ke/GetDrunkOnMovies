@@ -95,11 +95,6 @@ select > * {
 	
 	box-shadow: 		0px 0px 25px #888888;
 	
-	/*border-style:		solid;
-	border-width:		3px;
-	border-color:		#60bcf2;
-	border-radius:		3px;*/
-	
 	display:			inline-block;
 }
 
@@ -136,8 +131,38 @@ select > * {
     -ms-filter: 		"FlipH";
 }
 
+.ds-ui-divider {
+	width:				100%;
+	color:				#76dd00;
+	font-size:			1.3em;
+	font-weight:		normal;
+	text-align:			left;
+	padding-left:		.3em;
+	font-family:		fantasy;
+	
+	border-style:		none none solid none;
+	border-width:		1px;
+	border-color:		#76dd00;
+}
+
+.ds-ui-entry {
+	padding:			3px 0px 3px 30px;
+
+	display:			block;
+	
+	text-align:			left;
+	
+	background-color:	#efefef;
+}
+
+.ds-ui-entry-odd {
+	background-color:	#f2f2f2;
+}
+
 .ds-test {
 	height:				200px;
 	width:				200px;
 	background-color:	#FFF000;
 }
+
+.ds-ui

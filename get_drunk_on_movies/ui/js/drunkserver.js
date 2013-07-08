@@ -27,7 +27,7 @@ function apeWalkBack() {
 	ape.delay(800).animate({'left' : -64}, 20000, apeWalk);
 }
 
-function hideElement(ele) {
+function hideElement(ele, callback) {
 	$(ele).css('position', 'relative');
 	$(ele).animate({
 			'opacity' : '0.0',
@@ -40,23 +40,82 @@ function hideElement(ele) {
 				'top' 		: '0',
 				'display' 	: 'none'
 			});
+			if(callback !== undefined) {
+				callback();
+			}
 		}
 	);
 }
 
-function showAll() {
+function showElement(ele, callback) {
+	$(ele).css({
+		'position'	: 'relative', 
+		'top' 		: '-30',
+		'display' 	: '',
+		'opacity'	: '0'
+	});
+	$(ele).animate({
+			'opacity' : '1.0',
+			'top' : '0'
+		}, 
+		400, 
+		function() {
+			$(ele).css('position' , '');
+			if(callback !== undefined) {
+				callback();
+			}
+		}
+	);
+}
+
+function showMovieList() {
 		$.getJSON("http://localhost:8080/?allMovies", {}, 
 			function(data) {
-			alert(data);
-			var display = $('#display');
-			display.html('');
-			for(var i = 0; i < data.length; ++i) {
-				var movieTitleContainer = $('<div class="movieTitle">' + (i+1) + '. ' + data[i] + '</div>');
-				movieTitleContainer.data('name', data[i]);
-				display.append(movieTitleContainer);
+				var container = $('#ds-content');
+				var sorted = {};
+				sortMovies(data, sorted);
+				hideElement(container, function() {
+					container.empty();
+					putMoviesInList(sorted, container);
+					showElement(container);
+				});
 			}
-			addEvents();
-	});
+		);
+}
+
+function putMoviesInList(movies, list) {
+	var divider = $('<div class="ds-ui-divider"></div>');
+	var movie = $('<span class="ds-ui-entry"></div>');
+	for(var index in movies) {
+		var odd = true;
+		// divider
+		var tmp = divider.clone();
+		tmp.html(index);
+		list.append(tmp);
+		// movies
+		for(var key in movies[index]) {
+			var movieClone = movie.clone();
+			movieClone.html(movies[index][key]);
+			if(odd) {
+				movieClone.addClass('ds-ui-entry-odd');
+			}
+			odd = !odd;
+			tmp.after(movieClone);
+		}	
+	}
+}
+
+function sortMovies(movies, sorted) {
+	for(var key in movies) {
+		var index = movies[key].charAt(0).toLowerCase();
+		var cur = sorted[index];
+		if(cur === undefined) {
+			sorted[index] = new Array();
+			sorted[index][0] = movies[key];
+		} else {
+			cur.push(movies[key]);
+		}
+	} 
 }
 		
 function showOne(movie) {
