@@ -135,7 +135,7 @@ function putMoviesInList(movies, list) {
 				movieClone.addClass('ds-ui-entry-odd');
 			}
 			odd = !odd;
-			tmp.after(movieClone);
+			list.append(movieClone);
 		}	
 	}
 }
