@@ -4,6 +4,7 @@ host = 'http://78.47.27.135';
 var sexFactor = factorMale;
 var weightFactor = 70;
 var drinkFactor = drinkBeerSlug;
+var currentMovie = undefined;
 
 var delay = (function(){
   var timer = 0;
@@ -14,10 +15,9 @@ var delay = (function(){
 })();
 
 $(document).ready(function() {
-	$('#test').click(function() {
-		hideElement($('#test'));
-	});
-	
+	$('#sexSelect').val('male');	
+	$('#weightSelect').val('70');
+	$('#drinkSelect').val('slugbeer');
 	$('#ds-searchbox').keyup(function() {
 		delay(function(){
 			var searchString = $('#ds-searchbox').val();
@@ -109,6 +109,7 @@ function showMovieList() {
 }
 
 function fillMovieList(data) {
+	currentMovie = undefined;
 	var container = $('#ds-content');
 	var sorted = {};
 	sortMovies(data, sorted);
@@ -159,6 +160,7 @@ function sortMovies(movies, sorted) {
 }
 		
 function showOne(movie) {
+	currentMovie = movie;
 	$.getJSON(host+":8080/", 
 	{
 		'movie' : movie
@@ -236,7 +238,8 @@ function search(searchString) {
 }
 
 function refresh() {
-	// todo
+	if (currentMovie !== undefined)
+		showOne(currentMovie);
 }
 		
 function addEvents() {
@@ -256,15 +259,16 @@ function addEvents() {
 	});
 	$('#weightSelect').change(function() {
 		weightFactor = $(this).val();
+		refresh();
 	});
 	$('#drinkSelect').change(function() {
 		var d = $(this).val();
-		alert(d);
 		if (d === "slugbeer") {
 			drinkFactor=drinkBeerSlug; }
 		else if (d === "fullbeer") {
 			drinkFactor=drinkBeer; }
 		else { // schnaps
 			drinkFactor=drinkSchnaps; }
+		refresh();
 	});
 }
