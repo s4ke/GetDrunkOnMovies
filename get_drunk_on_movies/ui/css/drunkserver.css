@@ -1,233 +1,233 @@
 html {
-    height: 			100%;
+	height: 100%;
 }
 
 body {
-	padding:			0px;
-	margin:				0px;
+	padding: 0px;
+	margin: 0px;
 	
-	font-family:		fauna one;
-	font-weight:		bold;
-	color:				#565656;
+	font-family: fauna one;
+	font-weight: bold;
+	color: #565656;
 	
-	height:				100%;
+	height: 100%;
 }
 
 h1 {
-	color:				#76dd00;
-	font-family: 		'Denk One', sans-serif;
+	color: #76dd00;
+	font-family: 'Denk One', sans-serif;
 	
-	text-align:			right;
+	text-align: right;
 	
-	margin-left:		20px;
-	margin-right:		20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 a {
-	color:				#76dd00;
+	color: #76dd00;
 }
 
 button {
-	background-color:	#FFFFFF;
-	border:				none;
+	background-color: #FFFFFF;
+	border: none;
 	
-	font-family:		fauna one;
-	font-weight:		bold;
-	font-size:			1em;
-	color:				#565656;
+	font-family: fauna one;
+	font-weight: bold;
+	font-size: 1em;
+	color: #565656;
 	
-	padding:			4px 6px 4px 6px;
-	margin-top:			10px;
+	padding: 4px 6px 4px 6px;
+	margin-top: 10px;
 	
-	box-shadow: 		0px 0px 5px #888888;
-	transition:			box-shadow .5s, top .5s;
+	box-shadow: 0px 0px 5px #888888;
+	transition: box-shadow .5s, top .5s;
 	
-	cursor:				pointer;
+	cursor: pointer;
 }
 
 button:hover {
-	box-shadow: 		0px 0px 10px #76dd00;
-	transition:			box-shadow .15s;
+	box-shadow: 0px 0px 10px #76dd00;
+	transition: box-shadow .15s;
 }
 
 button:active {
-	box-shadow: 		0px 0px 20px 2px #76dd00;
-	transition:			box-shadow .1s;
+	box-shadow: 0px 0px 20px 2px #76dd00;
+	transition: box-shadow .1s;
 }
 
 select {
-	background-color:	#FFFFFF;
-	border:				none;
+	background-color: #FFFFFF;
+	border: none;
 	
-	font-family:		fauna one;
-	font-weight:		bold;
-	font-size:			1em;
-	color:				#565656;
+	font-family: fauna one;
+	font-weight: bold;
+	font-size: 1em;
+	color: #565656;
 	
-	padding:			4px 0px 4px 6px;
+	padding: 4px 0px 4px 6px;
 	
-	box-shadow: 		0px 0px 5px #888888;
-	transition:			box-shadow .5s;
+	box-shadow: 0px 0px 5px #888888;
+	transition: box-shadow .5s;
 	
-	cursor:				pointer;
+	cursor: pointer;
 	
 	-webkit-appearance: none;
 }
 
 select:active {
-	border:				none;
+	border: none;
 }
 
 select > * {
-	background-color:	#FFFFFF;
-	border:				none;
+	background-color: #FFFFFF;
+	border: none;
 }
 
 input {
-	text-align:			left;
+	text-align: left;
 	
-	border-style:		none none solid none;
-	border-width:		1px;
-	border-color: 		#76dd00;
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: #76dd00;
 	
-	box-shadow: 		0px 0px 5px #888888;
+	box-shadow: 0px 0px 5px #888888;
 	
-	background-color:	#f3f3f3;
+	background-color: #f3f3f3;
 	
-	outline:			none;
+	outline: none;
 	
-	padding:			2px;
+	padding: 2px;
 	
-	font-family:		fauna one;
-	font-weight:		bold;
-	color:				#565656;
+	font-family: fauna one;
+	font-weight: bold;
+	color: #565656;
 }
 
 #ds-maincontainer {
-	width:				40%;
-	min-height:			100%;
-	min-width:			500px;
+	width: 40%;
+	min-height: 100%;
+	min-width: 500px;
 	
-	background: 		rgb(238,238,238); /* Old browsers */
-	background: 		-moz-linear-gradient(-45deg,  rgba(238,238,238,1) 0%, rgba(233,233,233,1) 100%); /* FF3.6+ */
-	background: 		-webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(233,233,233,1))); /* Chrome,Safari4+ */
-	background: 		-webkit-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: 		-o-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Opera 11.10+ */
-	background: 		-ms-linear-gradient(-45deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* IE10+ */
-	background: 		linear-gradient(135deg,  rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* W3C */
-	filter: 			progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: rgb(238,238,238); /* Old browsers */
+	background: -moz-linear-gradient(-45deg, rgba(238,238,238,1) 0%, rgba(233,233,233,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(233,233,233,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg, rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg, rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg, rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* IE10+ */
+	background: linear-gradient(135deg, rgba(238,238,238,1) 0%,rgba(233,233,233,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	
-	padding: 			0px 10px 10px 10px;
+	padding: 0px 10px 10px 10px;
 	
-	box-shadow: 		0px 0px 25px #888888;
+	box-shadow: 0px 0px 25px #888888;
 	
-	display:			inline-block;
+	display: inline-block;
 }
 
 #ds-centercontainer {
-	height:				100%;
-	height:			100%;
-	text-align:			center;
+	height: 100%;
+	height: 100%;
+	text-align: center;
 }
 
 .ds-ui-text {
-	margin-left:		40px;
-	margin-right:		35%;
+	margin-left: 40px;
+	margin-right: 35%;
 	
-	text-align:			left;
-		
-	padding-left:		5px;
+	text-align: left;
+	
+	padding-left: 5px;
 }
 
 .ds-ui-ape {
-	background:	url("Ape_walks.gif") no-repeat center center;
+	background: url("Ape_walks.gif") no-repeat center center;
 	
-	position:			absolute;
+	position: absolute;
 	
-	height:				64px;
-	width:				64px;
+	height: 64px;
+	width: 64px;
 }
 
 .ds-ui-ape-flip {
-	-moz-transform: 	scaleX(-1);
-    -o-transform: 		scaleX(-1);
-    -webkit-transform: 	scaleX(-1);
-    transform: 			scaleX(-1);
-    filter: 			FlipH;
-    -ms-filter: 		"FlipH";
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
 }
 
 .ds-ui-divider {
-	width:				100%;
-	color:				#76dd00;
-	font-size:			1.3em;
-	font-weight:		normal;
-	text-align:			left;
-	padding-top:		10px;
-	padding-left:		.3em;
-	font-family: 		'Denk One', sans-serif;
+	width: 100%;
+	color: #76dd00;
+	font-size: 1.3em;
+	font-weight: normal;
+	text-align: left;
+	padding-top: 10px;
+	padding-left: .3em;
+	font-family: 'Denk One', sans-serif;
 	
-	border-style:		none none solid none;
-	border-width:		1px;
-	border-color:		#76dd00;
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: #76dd00;
 }
 
 .ds-ui-entry {
-	padding:			3px 0px 3px 30px;
+	padding: 3px 0px 3px 30px;
 
-	display:			block;
+	display: block;
 	
-	text-align:			left;
+	text-align: left;
 	
-	background-color:	#efefef;
+	background-color: #efefef;
 	
-	transition:			background-color .5s;
+	transition: background-color .5s;
 }
 
 .ds-ui-clickable {
-	cursor:				pointer;
+	cursor: pointer;
 }
 
 .ds-ui-entry:hover {
-	background-color:	#c8fc88 !important;
+	background-color: #c8fc88 !important;
 	
-	transition:			background-color .1s;
+	transition: background-color .1s;
 }
 
 .ds-ui-entry-odd {
-	background-color:	#f2f2f2;
+	background-color: #f2f2f2;
 }
 
 .ds-ui-gravity-left {
-	width:				100%;
-	text-align:			left;
+	width: 100%;
+	text-align: left;
 }
 
 .ds-ui-gravity-right {
-	width:				100%;
-	text-align:			right;
+	width: 100%;
+	text-align: right;
 }
 
 .ds-ui-gravity-center {
-	width:				100%;
-	text-align:			center;
+	width: 100%;
+	text-align: center;
 }
 
 .ds-ui-occasion {
-	text-align:			left;
+	text-align: left;
 }
 
 .ds-ui-drink-count {
-	text-align:			right;
+	text-align: right;
 	
-	color:				#76dd00;
-	font-family: 		'Denk One', sans-serif;
+	color: #76dd00;
+	font-family: 'Denk One', sans-serif;
 	
-	width:				100%;
+	width: 100%;
 }
 
 .ds-ui-drink-table {
-	width:				100%;
+	width: 100%;
 }
 
 div.sexselection {
