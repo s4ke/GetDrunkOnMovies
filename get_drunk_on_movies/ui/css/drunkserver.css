@@ -230,7 +230,9 @@ input {
 	width: 100%;
 }
 
-div.sexselection {
-}
-.ds-ui-smiley {
-}
+.ds-ui-smiley { }
+.ds-ui-promille { }
+
+#sexselection { }
+#drinkSelection { }
+#weightSelection {}

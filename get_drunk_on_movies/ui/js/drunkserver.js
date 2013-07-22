@@ -1,9 +1,7 @@
 host = 'http://78.47.27.135';
 
 // global variables
-var sexFactor = factorMale;
-var weightFactor = 70;
-var drinkFactor = drinkBeerSlug;
+
 var currentMovie = undefined;
 
 var delay = (function(){
@@ -15,9 +13,11 @@ var delay = (function(){
 })();
 
 $(document).ready(function() {
-	$('#sexSelect').val('male');	
-	$('#weightSelect').val('70');
-	$('#drinkSelect').val('slugbeer');
+	restoreFromCookie();
+	$('#sexSelect').val(sexFactor);	
+	$('#weightSelect').val(weightFactor);
+	$('#drinkSelect').val(drinkFactor);
+
 	$('#ds-searchbox').keyup(function() {
 		delay(function(){
 			var searchString = $('#ds-searchbox').val();
@@ -194,7 +194,9 @@ function addMovieToDiv(container, movie) {
 	var tableRow = $('<tr class="ds-ui-entry"></tr>');
 	var occasionContainer = $('<td class="ds-ui-occasion"></td>');
 	var drinkCountContainer = $('<td class="ds-ui-drink-count"></td>');
-	var drunkStatusContainer = $('<td class="ds-ui-drunk-status"></td>');
+	var smileyContainer = $('<td class="ds-ui-smiley"></td>');
+	var promilleContainer= $('<td class="ds-ui-promille"></td>');
+
 	
 	var drink = movie['drink'];
 	var name = movie['name'];
@@ -207,7 +209,8 @@ function addMovieToDiv(container, movie) {
 			var rowClone = tableRow.clone();
 			var occasionClone = occasionContainer.clone();
 			var drinkCountClone = drinkCountContainer.clone();
-			var drunkStatusClone = drunkStatusContainer.clone();
+			var promilleClone = promilleContainer.clone();
+			var smileyClone = smileyContainer.clone();
 			var p = promille(drink[occasion], drinkFactor, sexFactor, weightFactor);
 			
 			if(odd) {
@@ -215,10 +218,13 @@ function addMovieToDiv(container, movie) {
 			}
 			
 			occasionClone.html(occasion);
-			drinkCountClone.html(drink[occasion] + "(" + p + "‰)");
-			drunkStatusClone.html('<img class="ds-ui-smiley" src="'+ getSmiley(p) + '" alt="" />');
+			promilleClone.html(p + "‰");
+			drinkCountClone.html(drink[occasion]);
+			smileyClone.html('<img src="'+ getSmiley(p) + '" alt="" />');
+	
 			rowClone.append(occasionClone);
-			rowClone.append(drunkStatusClone);
+			rowClone.append(promilleClone);
+			rowClone.append(smileyClone);
 			rowClone.append(drinkCountClone);
 			table.append(rowClone);
 			
@@ -248,27 +254,18 @@ function addEvents() {
 	}); 
 */
 	$('#sexSelect').change(function() {
-		var sex = $(this).val();	
-		if (sex === "baby") {
-			sexFactor=factorBaby; }
-		else if (sex === "female") {
-			sexFactor=factorFemale; }
-		else { // male
-			sexFactor=factorMale; }
+		var sexFactor = $(this).val();	
+		writeCookie();
 		refresh();
 	});
 	$('#weightSelect').change(function() {
 		weightFactor = $(this).val();
+		writeCookie();
 		refresh();
 	});
 	$('#drinkSelect').change(function() {
-		var d = $(this).val();
-		if (d === "slugbeer") {
-			drinkFactor=drinkBeerSlug; }
-		else if (d === "fullbeer") {
-			drinkFactor=drinkBeer; }
-		else { // schnaps
-			drinkFactor=drinkSchnaps; }
+		drinkFactor = $(this).val();
+		writeCookie();
 		refresh();
 	});
 }
