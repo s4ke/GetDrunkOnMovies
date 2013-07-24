@@ -185,7 +185,7 @@ function getSmiley(promille)
 		return "/img/alcool/alcool06.gif"; }
 	else if (promille > 0.5) {
 		return "/img/alcool/alcool14.gif"; }
-	return undefined;
+	return "/img/alcool/normal.gif";
 }
 		
 function addMovieToDiv(container, movie) {	
