@@ -13,7 +13,7 @@ function get_cookie ( cookie_name )
 
 function writeCookie()
 {
-	var cookie = "drunk=" + drinkFactor + "," + sexFactor + "," + weightFactor + "; max-age=" + 60*60*24*365 + "; path=/; domain=localhost;";
+	var cookie = "drunk=" + drinkFactor + "," + sexFactor + "," + weightFactor + "; max-age=" + 60*60*24*365 + "; path=/; domain=getdrunkonmovies.com;";
 	//console.log("writing cookie: "+cookie);
 	document.cookie = cookie;
 }
