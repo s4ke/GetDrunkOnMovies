@@ -1,4 +1,4 @@
-host = 'http://78.47.27.135';
+﻿host = 'http://localhost';
 
 // global variables
 
