@@ -20,10 +20,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.DocumentId;
@@ -51,6 +53,7 @@ public class DBMovie {
 	@Field(store = Store.YES, index = Index.YES, analyzer = @Analyzer(impl = CompleteWordAnalyzer.class))
 	private String name;
 
+	@OrderBy("count")
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "dbMovie", targetEntity = DrinkOccasion.class, orphanRemoval = true)
 	private List<DrinkOccasion> occasions;
 

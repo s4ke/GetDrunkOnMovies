@@ -21,6 +21,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnitUtil;
 
 import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
 
@@ -106,6 +107,19 @@ public class Database {
 					"SELECT a FROM DBMovie a ORDER BY a.name ASC")
 					.getResultList();
 			return movies;
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+	}
+
+	public static DBMovie findOne(Integer id) {
+		EntityManager em = emf.createEntityManager();
+		try {
+			return (DBMovie) em
+					.createQuery("SELECT a FROM DBMovie a WHERE a.id =" + id)
+					.setMaxResults(0).setFirstResult(0).getResultList().get(0);
 		} finally {
 			if (em != null) {
 				em.close();

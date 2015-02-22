@@ -22,7 +22,6 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.ImmutableSortedSet;
 
 import de.fsmpi.drunkserver.db.DBMovie;
 import de.fsmpi.drunkserver.db.Database;
@@ -70,48 +69,16 @@ public class DrunkServer extends AbstractHandler {
 			if (request.getParameter("allMovies") != null) {
 				LOGGER.log(Level.INFO, "all movies requested from "
 						+ remoteAddr);
-				List<Movie> movies = new ArrayList<>();
-				for (DBMovie dbMovie : Database.getAll()) {
-					Movie movie = new Movie();
-					movie.setName(dbMovie.getName());
-					movie.setDrink(ImmutableSortedMap.copyOf(new HashMap<String, Integer>()));
-					movies.add(movie);
-				}
-				serializer.deepSerialize(movies, writer);
+				serializer.deepSerialize(putIntoBatches(Database.getAll()), writer);
 			} else if (request.getParameter("movie") != null) {
-				String movieName = request.getParameter("movie");
-				LOGGER.log(Level.INFO, "movie \"" + movieName
+				Integer id= Integer.parseInt(request.getParameter("movie"));
+				LOGGER.log(Level.INFO, "movie \"" + id
 						+ "\" requested from " + remoteAddr);
-				List<DBMovie> dbMovies = Database.findAll(movieName);
-				if (dbMovies.size() == 0) {
-					serializer.serialize(new Movie(), writer);
+				DBMovie dbMovie = Database.findOne(id);
+				if (dbMovie == null) {
+					serializer.serialize(new DBMovie(), writer);
 				} else {
-					List<Movie> movies = new ArrayList<>();
-					for (DBMovie dbMovie : dbMovies) {
-						Movie movie = new Movie();
-						movie.setName(dbMovie.getName());
-						final Map<String, Integer> map = new HashMap<>();
-						for (DrinkOccasion dbOccasion : dbMovie.getOccasions()) {
-							map.put(dbOccasion.getText(), dbOccasion.getCount());
-						}
-						movie.setDrink(ImmutableSortedMap.copyOf(map,
-								new Comparator<String>() {
-
-									@Override
-									public int compare(String first,
-											String second) {
-										int ret = map.get(second)
-												- map.get(first);
-										if (ret == 0) {
-											ret = first.compareTo(second);
-										}
-										return ret;
-									}
-
-								}));
-						movies.add(movie);
-					}
-					serializer.serialize(movies, writer);
+					serializer.deepSerialize(dbMovie, writer);
 				}
 			} else if (request.getParameter("rebuild") != null
 					&& (remoteAddr.equals("0:0:0:0:0:0:0:1") || remoteAddr
@@ -125,28 +92,58 @@ public class DrunkServer extends AbstractHandler {
 			} else if (request.getParameter("search") != null) {
 				// TODO: LUCENIZE this
 				String searchString = request.getParameter("search");
-				List<Movie> movies = new ArrayList<>();
-				for (DBMovie dbMovie : Database.findAll(searchString)) {
-					Movie movie = new Movie();
-					movie.setName(dbMovie.getName());
-					movie.setDrink(ImmutableSortedMap.copyOf(new HashMap<String, Integer>()));
-					movies.add(movie);
-				}
-				serializer.serialize(
-						ImmutableSortedSet.copyOf(new Comparator<Movie>() {
-
-							@Override
-							public int compare(Movie first, Movie second) {
-								return first.getName().compareTo(
-										second.getName());
-							}
-
-						}, movies), writer);
+				serializer.deepSerialize(putIntoBatches(Database.findAll(searchString)), writer);
 			} else {
 				writer.println("nothing to do");
 			}
 		}
 	}
+	
+	private static ImmutableSortedMap<String, List<DBMovie>> putIntoBatches(List<DBMovie> dbMovies) {
+		//TODO: do this with faceting!
+		Map<String, List<DBMovie>> dbMoviesPerStartingLetter = new HashMap<>();
+		for(DBMovie dbMovie : dbMovies) {
+			dbMoviesPerStartingLetter.computeIfAbsent(dbMovie.getName().substring(0, 1).toUpperCase(), (key) -> {
+				return new ArrayList<>();
+			}).add(dbMovie);
+		}
+		for(Map.Entry<String, List<DBMovie>> entry : dbMoviesPerStartingLetter.entrySet()) {
+			entry.getValue().sort(new Comparator<DBMovie>() {
+
+				@Override
+				public int compare(DBMovie first, DBMovie second) {
+					return first.getName().compareTo(second.getName());
+				}
+				
+			});
+		}
+		return ImmutableSortedMap.copyOf(dbMoviesPerStartingLetter);
+	}
+	
+//	private static Movie toMovie(DBMovie dbMovie) {
+//		Movie movie = new Movie();
+//		movie.setName(dbMovie.getName());
+//		final Map<String, Integer> map = new HashMap<>();
+//		for (DrinkOccasion dbOccasion : dbMovie.getOccasions()) {
+//			map.put(dbOccasion.getText(), dbOccasion.getCount());
+//		}
+//		movie.setDrink(ImmutableSortedMap.copyOf(map,
+//				new Comparator<String>() {
+//
+//					@Override
+//					public int compare(String first,
+//							String second) {
+//						int ret = map.get(second)
+//								- map.get(first);
+//						if (ret == 0) {
+//							ret = first.compareTo(second);
+//						}
+//						return ret;
+//					}
+//
+//				}));
+//		return movie;
+//	}
 
 	private void init() throws IOException {
 		this.lock.lock();

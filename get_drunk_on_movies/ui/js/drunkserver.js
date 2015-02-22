@@ -111,52 +111,40 @@ function showMovieList() {
 function fillMovieList(data) {
 	currentMovie = undefined;
 	var container = $('#ds-content');
-	var sorted = {};
-	sortMovies(data, sorted);
+//	var sorted = {};
+//	sortMovies(data, sorted);
 	hideElement(container, function() {
 		container.empty();
-		putMoviesInList(sorted, container);
+		putMoviesInList(data, container);
 		showElement(container);
 	});
 }
 
-function putMoviesInList(movies, list) {
+function putMoviesInList(moviesPerLetter, list) {
 	var divider = $('<div class="ds-ui-divider"></div>');
 	var movie = $('<div class="ds-ui-entry ds-ui-clickable"></div>');
-	for(var index in movies) {
+	for(var index in moviesPerLetter) {
 		var odd = true;
 		// divider
 		var tmp = divider.clone();
 		tmp.html(index);
 		list.append(tmp);
 		// movies
-		for(var key in movies[index]) {
+		for(movieDataIndex in moviesPerLetter[index]) {
 			var movieClone = movie.clone();
-			movieClone.data('name', movies[index][key]);
-			movieClone.html(movies[index][key]);
+			movieData = moviesPerLetter[index][movieDataIndex];
+			movieClone.data('id', movieData["id"]);
+			movieClone.html(movieData["name"]);
 			movieClone.click(function(e) {
-				showOne($(e.target).data('name'));
+				showOne($(e.target).data('id'));
 			});
 			if(odd) {
 				movieClone.addClass('ds-ui-entry-odd');
 			}
 			odd = !odd;
 			list.append(movieClone);
-		}	
-	}
-}
-
-function sortMovies(movies, sorted) {
-	for(var key in movies) {
-		var index = movies[key].charAt(0).toLowerCase();
-		var cur = sorted[index];
-		if(cur === undefined) {
-			sorted[index] = new Array();
-			sorted[index][0] = movies[key];
-		} else {
-			cur.push(movies[key]);
 		}
-	} 
+	}
 }
 		
 function showOne(movie) {
@@ -168,10 +156,7 @@ function showOne(movie) {
 		var container = $('#ds-content');
 		hideElement(container, function() {
 			container.empty();
-			for(var key in data) {
-				var instance = data[key];
-				addMovieToDiv(container, instance);
-			}
+			addMovieToDiv(container, data);
 			showElement(container);
 		});			
 	});
@@ -198,7 +183,7 @@ function addMovieToDiv(container, movie) {
 	var promilleContainer= $('<td class="ds-ui-promille"></td>');
 
 	
-	var drink = movie['drink'];
+	var drink = movie["occasions"]
 	var name = movie['name'];
 	if(drink !== null && name !== null) {
 		var titleClone = titleContainer.clone();
@@ -211,13 +196,13 @@ function addMovieToDiv(container, movie) {
 			var drinkCountClone = drinkCountContainer.clone();
 			var promilleClone = promilleContainer.clone();
 			var smileyClone = smileyContainer.clone();
-			var p = promille(drink[occasion], drinkFactor, sexFactor, weightFactor);
+			var p = promille(drink[occasion]["count"], drinkFactor, sexFactor, weightFactor);
 			
 			if(odd) {
 				rowClone.addClass('ds-ui-entry-odd');
 			}
 			
-			occasionClone.html(occasion);
+			occasionClone.html(drink[occasion]["text"]);
 			promilleClone.html(p + "‰");
 			drinkCountClone.html(drink[occasion]);
 			smileyClone.html('<img src="'+ getSmiley(p) + '" alt="" />');

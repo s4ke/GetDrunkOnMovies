@@ -12,8 +12,8 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:file:drunkserver" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
-			<!-- create-or-extend-tables -->
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+			<!-- create-or-extend-tables drop-and-create-tables-->
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="both" />
 		</properties>
