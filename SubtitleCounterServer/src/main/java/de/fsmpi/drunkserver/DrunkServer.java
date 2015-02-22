@@ -90,7 +90,6 @@ public class DrunkServer extends AbstractHandler {
 					LOGGER.log(Level.INFO, "IOException in init", e);
 				}
 			} else if (request.getParameter("search") != null) {
-				// TODO: LUCENIZE this
 				String searchString = request.getParameter("search");
 				serializer.deepSerialize(putIntoBatches(Database.findAll(searchString)), writer);
 			} else {
@@ -119,31 +118,6 @@ public class DrunkServer extends AbstractHandler {
 		}
 		return ImmutableSortedMap.copyOf(dbMoviesPerStartingLetter);
 	}
-	
-//	private static Movie toMovie(DBMovie dbMovie) {
-//		Movie movie = new Movie();
-//		movie.setName(dbMovie.getName());
-//		final Map<String, Integer> map = new HashMap<>();
-//		for (DrinkOccasion dbOccasion : dbMovie.getOccasions()) {
-//			map.put(dbOccasion.getText(), dbOccasion.getCount());
-//		}
-//		movie.setDrink(ImmutableSortedMap.copyOf(map,
-//				new Comparator<String>() {
-//
-//					@Override
-//					public int compare(String first,
-//							String second) {
-//						int ret = map.get(second)
-//								- map.get(first);
-//						if (ret == 0) {
-//							ret = first.compareTo(second);
-//						}
-//						return ret;
-//					}
-//
-//				}));
-//		return movie;
-//	}
 
 	private void init() throws IOException {
 		this.lock.lock();
