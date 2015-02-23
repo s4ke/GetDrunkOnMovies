@@ -204,7 +204,7 @@ function addMovieToDiv(container, movie) {
 			
 			occasionClone.html(drink[occasion]["text"]);
 			promilleClone.html(p + "‰");
-			drinkCountClone.html(drink[occasion]);
+			drinkCountClone.html(drink[occasion]["count"]);
 			smileyClone.html('<img src="'+ getSmiley(p) + '" alt="" />');
 	
 			rowClone.append(occasionClone);
